@@ -11,19 +11,13 @@
 class degreeAwards {
 public:
     float getMean(const std::vector<std::string>& inputGrades);
-
     std::string getMajority(const std::vector<std::string>& inputGrades);
-
     int getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades);
-
     std::string getGradeFromRatio(float inputGrade);
 
+private:
     static const std::map<std::string, int> GRADES;
-
-    float gradeBoundary_Fail = 3.5f;
-    float gradeBoundary_3rd = 6.5f;
-    float gradeBoundary_22 = 9.5f;
-    float gradeBoundary_21 = 12.5f;
+    const std::vector<float> GRADEBOUNDARIES = {3.5f, 6.5f, 9.5f, 12.5f}; // Fail, 3rd, 22, 21
 };
 
 #endif

@@ -48,7 +48,7 @@ std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrade
 }
 
 
-int degreeAwards::getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades){
+int degreeAwards::getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades) {
     int secondYearMean = getMean(secondYearGrades) * 0.2;
     int thirdYearMean = getMean(secondYearGrades) * 0.8;
     int finalMean = secondYearMean + thirdYearMean;
@@ -62,26 +62,10 @@ int degreeAwards::getFinalYearGrade(const std::vector<std::string>& secondYearGr
     return finalMean > finalYearMajorityNumeric ? finalMean : finalYearMajorityNumeric;
 }
 
-std::string degreeAwards::getGradeFromRatio(float inputGrade){
-
-    if (inputGrade < gradeBoundary_Fail)
-    {
-        return "Fail";
-    }
-    else if (inputGrade < gradeBoundary_3rd)
-    {
-        return "3rd";
-    }
-    else if (inputGrade < gradeBoundary_22)
-    {
-        return "2:2";
-    }
-    else if (inputGrade < gradeBoundary_21)
-    {
-        return "2:1";
-    }
-    else
-    {
-        return "1st";
-    }
+std::string degreeAwards::getGradeFromRatio(float inputGrade) {
+    if (inputGrade < GRADEBOUNDARIES[0]) {return "Fail";}
+    else if (inputGrade < GRADEBOUNDARIES[1]) {return "3rd";}
+    else if (inputGrade < GRADEBOUNDARIES[2]) {return "2:2";}
+    else if (inputGrade < GRADEBOUNDARIES[3]) {return "2:1";}
+    return "1st";
 }
