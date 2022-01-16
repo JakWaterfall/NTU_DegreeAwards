@@ -59,7 +59,7 @@ std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrade
         }
     }
 
-    if (majorityCounts.size() == modeMap.size()) {
+    if (majorityCounts.size() == inputGrades.size()) {
         return "Zero";
     } else {
         return ret;
