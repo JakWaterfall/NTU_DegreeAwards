@@ -23,7 +23,6 @@ const std::map<std::string, int> degreeAwards::GRADES = {
 double degreeAwards::round(float num) {
     std::string value = std::to_string(num);
     size_t pos = value.find('.');
-    double blah = std::stod(value.substr(0, pos + 2));
     return std::stod(value.substr(0, pos + 2));
 };
 
@@ -55,16 +54,16 @@ std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrade
 }
 
 
-int degreeAwards::getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades) {
-    int secondYearMean = getMean(secondYearGrades) * 0.2;
-    int thirdYearMean = getMean(secondYearGrades) * 0.8;
-    int finalMean = secondYearMean + thirdYearMean;
+double degreeAwards::getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades) {
+    double secondYearMean = getMean(secondYearGrades) * 0.2;
+    double thirdYearMean = getMean(secondYearGrades) * 0.8;
+    double finalMean = secondYearMean + thirdYearMean;
 
     std::string secondYearMajority = getMajority(secondYearGrades);
     thirdYearGrades.push_back(secondYearMajority);
 
     std::string finalYearMajority = getMajority(thirdYearGrades);
-    int finalYearMajorityNumeric = degreeAwards::GRADES.at(finalYearMajority);
+    double finalYearMajorityNumeric = degreeAwards::GRADES.at(finalYearMajority);
 
     return finalMean > finalYearMajorityNumeric ? finalMean : finalYearMajorityNumeric;
 }

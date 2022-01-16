@@ -12,7 +12,7 @@ class degreeAwards {
 public:
     double getMean(const std::vector<std::string>& inputGrades);
     std::string getMajority(const std::vector<std::string>& inputGrades);
-    int getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades);
+    double getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades);
     std::string getGradeFromRatio(float inputGrade);
 
 private:

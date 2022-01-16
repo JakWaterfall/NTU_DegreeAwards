@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE( Mean )
 BOOST_AUTO_TEST_CASE( MajorityGrade )
 {
     degreeAwards award;
-    BOOST_CHECK_EQUAL( award.getMajority({"Low 1st", "Mid 1st", "High 2:2"}) , "Mid 1st" );
+    BOOST_CHECK_EQUAL( award.getMajority({"Low 1st", "Mid 1st", "High 2:2"}) , "High 2:2" );
     BOOST_CHECK_EQUAL( award.getMajority({"High 1st", "High 1st", "High 2:2"}) , "High 1st" );
     BOOST_CHECK_EQUAL( award.getMajority({"High 1st", "High 1st", "High 1st"}) , "High 1st" );
 }
@@ -23,7 +23,8 @@ BOOST_AUTO_TEST_CASE( MajorityGrade )
 BOOST_AUTO_TEST_CASE( FinalYearGrade )
 {
     degreeAwards award;
-//    BOOST_CHECK_EQUAL( award.getFinalYearGrade({"High 1st", "Mid 1st", "High 2:2"}, {{"High 1st", "Mid 1st", "High 2:2"}}) , 12.6 );
+    std::vector<std::string> finalYearGrades = {"High 1st", "Mid 1st", "High 2:2"};
+    BOOST_CHECK_EQUAL( award.getFinalYearGrade({"High 1st", "Mid 1st", "High 2:2"}, finalYearGrades) , 12.6 );
 }
 
 
