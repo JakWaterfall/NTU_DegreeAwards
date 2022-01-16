@@ -32,8 +32,6 @@ int main()
     }
 }
 
-
-
 int getMean(const std::vector<std::string>& inputGrades) {
     int totalPoints = 0;
     for (std::string grade : inputGrades) {
@@ -42,3 +40,21 @@ int getMean(const std::vector<std::string>& inputGrades) {
     return totalPoints / inputGrades.size();
 }
 
+int getMajority(const std::vector<std::string>& inputGrades) {
+    std::unordered_map<std::string, int> modeMap;
+    int count = 0;
+
+    // Calculate mode
+    for (int i = 0; i < inputGrades.size(); i++) {
+        std::string current = inputGrades[i];
+        modeMap[current]++;
+        count = std::max(count, modeMap[current]);
+    }
+
+    // Return modal grade from map
+    for (auto pair : modeMap) {
+        if (pair.second == count) {
+            return pair.second;
+        }
+    }
+}

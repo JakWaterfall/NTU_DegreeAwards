@@ -7,7 +7,6 @@ QMAKE_CXXFLAGS += -std=c++17 -Wall -Wfatal-errors
 
 SOURCES += \
         src/degreeAwards.cpp \
-        src/main.cpp \
         tests/degreeAwards-Tests.cpp
 
 HEADERS += \
