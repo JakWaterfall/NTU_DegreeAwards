@@ -20,25 +20,66 @@ const std::map<std::string, int> degreeAwards::GRADES = {
     {"Zero", 0}
 };
 
-int main()
-{
-    std::string inputGrade;
-    while(inputGrade != "Quit")
-    {
-        std::cin >> inputGrade;
-        if (degreeAwards::GRADES.count(inputGrade)) {
-
-        }
-    }
-}
-
-
-
-int getMean(const std::vector<std::string>& inputGrades) {
+float degreeAwards::getMean(const std::vector<std::string>& inputGrades) {
     int totalPoints = 0;
     for (std::string grade : inputGrades) {
         totalPoints += degreeAwards::GRADES.at(grade);
     }
     return totalPoints / inputGrades.size();
 }
+
+std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrades){
+
+}
+
+int degreeAwards::getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades){
+    int secondYearMean = getMean(secondYearGrades) * 0.2;
+    int thirdYearMean = getMean(secondYearGrades) * 0.8;
+    int finalMean = secondYearMean + thirdYearMean;
+
+    std::string secondYearMajority = getMajority(secondYearGrades);
+    thirdYearGrades.push_back(secondYearMajority);
+
+    std::string finalYearMajority = getMajority(thirdYearGrades);
+    int finalYearMajorityNumeric = degreeAwards::GRADES.at(finalYearMajority);
+
+    return finalMean > finalYearMajorityNumeric ? finalMean : finalYearMajorityNumeric;
+}
+
+std::string degreeAwards::getGradeFromRatio(float inputGrade){
+
+    if (inputGrade < gradeBoundary_Fail)
+    {
+        return "Fail";
+    }
+    else if (inputGrade < gradeBoundary_3rd)
+    {
+        return "3rd";
+    }
+    else if (inputGrade < gradeBoundary_22)
+    {
+        return "2:2";
+    }
+    else if (inputGrade < gradeBoundary_21)
+    {
+        return "2:1";
+    }
+    else
+    {
+        return "1st";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 

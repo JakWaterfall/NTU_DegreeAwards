@@ -7,7 +7,6 @@ int main()
     while(inputGrade != "Quit")
     {
         std::cin >> inputGrade;
-        grades.push_back(grades.at());
 
     }
 
