@@ -20,12 +20,19 @@ const std::map<std::string, int> degreeAwards::GRADES = {
     {"Zero", 0}
 };
 
-float degreeAwards::getMean(const std::vector<std::string>& inputGrades) {
-    int totalPoints = 0;
+double degreeAwards::round(float num) {
+    std::string value = std::to_string(num);
+    size_t pos = value.find('.');
+    double blah = std::stod(value.substr(0, pos + 2));
+    return std::stod(value.substr(0, pos + 2));
+};
+
+double degreeAwards::getMean(const std::vector<std::string>& inputGrades) {
+    double totalPoints = 0;
     for (std::string grade : inputGrades) {
         totalPoints += degreeAwards::GRADES.at(grade);
     }
-    return totalPoints / inputGrades.size();
+    return round(totalPoints / inputGrades.size());
 }
 
 std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrades) {
