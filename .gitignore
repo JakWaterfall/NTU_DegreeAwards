@@ -1,0 +1,3 @@
+bin/*.o
+bin/DegreeAwards-Tests
+DegreeAwards-Tests.pro.user
