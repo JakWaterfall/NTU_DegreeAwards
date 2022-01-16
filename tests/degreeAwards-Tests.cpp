@@ -15,7 +15,7 @@ BOOST_AUTO_TEST_CASE( Mean )
 BOOST_AUTO_TEST_CASE( MajorityGrade )
 {
     degreeAwards award;
-    BOOST_CHECK_EQUAL( award.getMajority({"Low 1st", "Mid 1st", "High 2:2"}) , "High 2:2" );
+    BOOST_CHECK_EQUAL( award.getMajority({"Low 1st", "Mid 1st", "High 2:2"}) , "Zero" );
     BOOST_CHECK_EQUAL( award.getMajority({"High 1st", "High 1st", "High 2:2"}) , "High 1st" );
     BOOST_CHECK_EQUAL( award.getMajority({"High 1st", "High 1st", "High 1st"}) , "High 1st" );
 }
