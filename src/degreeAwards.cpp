@@ -37,6 +37,9 @@ double degreeAwards::getMean(const std::vector<std::string>& inputGrades) {
 std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrades) {
     std::unordered_map<std::string, int> modeMap;
     int count = 0;
+    std::vector<int> majorityCounts;
+    int highest = 0;
+    std::string ret;
 
     // Calculate mode
     for (int i = 0; i < inputGrades.size(); i++) {
@@ -48,8 +51,18 @@ std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrade
     // Return modal grade from map
     for (auto pair : modeMap) {
         if (pair.second == count) {
-            return pair.first;
+            majorityCounts.push_back(0);
+            if (count > highest) {
+                highest = count;
+                ret = pair.first;
+            }
         }
+    }
+
+    if (majorityCounts.size() == modeMap.size()) {
+        return "Zero";
+    } else {
+        return ret;
     }
 }
 
