@@ -40,7 +40,7 @@ int getMean(const std::vector<std::string>& inputGrades) {
     return totalPoints / inputGrades.size();
 }
 
-int getMajority(const std::vector<std::string>& inputGrades) {
+std::string getMajority(const std::vector<std::string>& inputGrades) {
     std::unordered_map<std::string, int> modeMap;
     int count = 0;
 
@@ -54,7 +54,7 @@ int getMajority(const std::vector<std::string>& inputGrades) {
     // Return modal grade from map
     for (auto pair : modeMap) {
         if (pair.second == count) {
-            return pair.second;
+            return pair.first;
         }
     }
 }
