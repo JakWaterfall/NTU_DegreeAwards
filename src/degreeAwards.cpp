@@ -28,9 +28,25 @@ float degreeAwards::getMean(const std::vector<std::string>& inputGrades) {
     return totalPoints / inputGrades.size();
 }
 
-std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrades){
+std::string degreeAwards::getMajority(const std::vector<std::string>& inputGrades) {
+    std::unordered_map<std::string, int> modeMap;
+    int count = 0;
 
+    // Calculate mode
+    for (int i = 0; i < inputGrades.size(); i++) {
+        std::string current = inputGrades[i];
+        modeMap[current]++;
+        count = std::max(count, modeMap[current]);
+    }
+
+    // Return modal grade from map
+    for (auto pair : modeMap) {
+        if (pair.second == count) {
+            return pair.first;
+        }
+    }
 }
+
 
 int degreeAwards::getFinalYearGrade(const std::vector<std::string>& secondYearGrades, std::vector<std::string>& thirdYearGrades){
     int secondYearMean = getMean(secondYearGrades) * 0.2;
@@ -69,17 +85,3 @@ std::string degreeAwards::getGradeFromRatio(float inputGrade){
         return "1st";
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
